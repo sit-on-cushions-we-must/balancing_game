@@ -29,6 +29,8 @@ void setup() {
 
 void loop() {
 
+  int counter = led1; // used to count in the while loops and to turn on the LEDs
+
 	// request readings from the sensor
   Wire.beginTransmission(MPU_addr);
   Wire.write(0x3D);  // starting with register 0x3D (ACCEL_YOUT_H)
@@ -40,11 +42,47 @@ void loop() {
 
   Serial.print("AcY = "); Serial.println(AcY);
 
-  if (AcY >= 10000 || AcY <= -10000)  {
-    Serial.println("tilted");
+  /* 
+   as long as the accelerometer is realtively flat
+   turn on the LEDs one after the other, and when all
+   the LEDs are lit do a flashing "win" animation.
+  */
+  while(AcY <= 10000 || AcY >= -10000) {
 
-    for (int i = 0; i < 7; ++i) {
-      /* code */
+    // turn on the LED at "counter"
+    digitalWrite(counter, HIGH);
+
+    if (counter >= led6) {
+
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
+      digitalWrite(led4, HIGH);
+      digitalWrite(led5, HIGH);
+      digitalWrite(led6, HIGH);
+      delay(500);
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+      digitalWrite(led6, LOW);
+      delay(500);
+      digitalWrite(led1, HIGH);
+      digitalWrite(led2, HIGH);
+      digitalWrite(led3, HIGH);
+      digitalWrite(led4, HIGH);
+      digitalWrite(led5, HIGH);
+      digitalWrite(led6, HIGH);
+      delay(500);
+      digitalWrite(led1, LOW);
+      digitalWrite(led2, LOW);
+      digitalWrite(led3, LOW);
+      digitalWrite(led4, LOW);
+      digitalWrite(led5, LOW);
+      digitalWrite(led6, LOW);
+    } else {
+      counter++; // increment the value of counter
     }
   }
 
