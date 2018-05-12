@@ -76,7 +76,7 @@ void loop() {
    if it is set state to 0 if it isn't
    set state to 1 and turn off all the LEDs
   */
-  if (AcY <= 8000 && AcY >= -8000) {
+  if (AcY <= 1500 && AcY >= -1500) {
     state = 0;// set "state" to 0
     Serial.println("balanced");
   } else {
