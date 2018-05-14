@@ -1,4 +1,4 @@
-/* 
+/*
  This is a balancing game, made with an Arduino an accelerometer and some LEDs
 
  Put all the circuitry on a plank and put the plank on a tube, have your victim
@@ -15,7 +15,7 @@
    there is a 1 second delay in the while loop.
  * If you stay balanced till all the LEDs light up, do the "win" animation
    set state to 1 and reset counter to the pin of the first LED
- 
+
  * If you lose your balance, the LEDs are turned off, state is set to 1
    and counter reset to the pin of the firs LED.
 
@@ -24,9 +24,9 @@
  Though porting it to other sensors should be pretty easy.
 
  This codes github repo: https://github.com/sit-on-cushions-we-must/balancing_game
- Wiring diagrams and stuff is here: 
+ Wiring diagrams and stuff is here:
 
- This code is licensed under the MIT license: https://mit-license.org/ 
+ This code is licensed under the MIT license: https://mit-license.org/
 */
 
 #include<Wire.h>
@@ -71,7 +71,7 @@ void loop() {
   Serial.print("AcY = "); Serial.println(AcY);
 
 
-  /* 
+  /*
    check if the sensor is balanced
    if it is set state to 0 if it isn't
    set state to 1 and turn off all the LEDs
@@ -103,10 +103,10 @@ void loop() {
     digitalWrite(counter, HIGH);
     delay(1000);
     counter ++;
-    break;
+    break; // break out of the loop so we can read the accelerometer
   }
 
-  // if the sensor stays balanced for 6 seconds
+  // if all the LEDs have been turnd on
   if (counter > 8) {
     // reset counter
     counter = 2;
