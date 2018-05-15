@@ -23,4 +23,4 @@ You will need the Arduino IDE to upload the code to your Arduino.
 * Upload the code to the board by pressing the Upload button,
   it's the arrow in a circle, at the top left corner of the IDE.
 
-This is my version of this thing I saw on twitter:https://twitter.com/morrill_rob/status/993850732485918720?s=09
+This project is my version of this thing I saw on twitter:https://twitter.com/morrill_rob/status/993850732485918720?s=09

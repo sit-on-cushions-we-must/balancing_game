@@ -43,7 +43,7 @@ const int MPU_addr=0x68;  // I2C address of the MPU-6050
 int16_t AcY; // used to store the accelerometer Y axis readings.
 
 int state = 1; // used to store the state of the sensor, 1 = tilted, 0 = balanced.
-int counter = 2; // used to light up the LEDs
+int counter = led1; // used to light up the LEDs
 
 
 void setup() {
@@ -84,7 +84,7 @@ void loop() {
     Serial.println("tilted");
     state = 1;
     // reset counter
-    counter = 2;
+    counter = led1;
     // turn off all the LEDs
     digitalWrite(led1, LOW);
     digitalWrite(led2, LOW);
@@ -106,10 +106,10 @@ void loop() {
     break; // break out of the loop so we can read the accelerometer
   }
 
-  // if all the LEDs have been turnd on
-  if (counter > 8) {
+  // if all the LEDs have been turned on
+  if (counter > (led6 + 1)) {
     // reset counter
-    counter = 2;
+    counter = led1;
     // set state to 1
     state = 1;
     // play the "you win" animation
